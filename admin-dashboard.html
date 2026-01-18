@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Admin - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="admin-dashboard.css" />
+  <script src="admin-dashboard.js" defer></script>
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>🔧 ADMIN PANEL</h2>
+        <p>MR KLIN LAUNDRY</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="admin-dashboard.html" class="active">📊 Dashboard</a></li>
+          <li><a href="admin-pesanan.html">🧾 Kelola Pesanan</a></li>
+          <li><a href="admin-status.html">🚚 Status Pengiriman</a></li>
+          <li><a href="admin-feedback.html">💬 Kritik & Saran</a></li> <li><a href="admin-pelanggan.html">👥 Data Pelanggan</a></li>
+          <li><a href="admin-laporan.html">📈 Laporan</a></li>
+          <li><a href="index.html">🚪 Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <h1>📊 Ringkasan Aktivitas</h1>
+        <p>Data update otomatis dari Local Storage</p>
+        <hr />
+      </header>
+
+      <section class="statistik-ringkasan">
+        <div class="grid">
+          <div class="card stat-card">
+            <h3>📦 Total Pesanan</h3>
+            <p id="totalPesanan">0</p>
+          </div>
+          <div class="card stat-card">
+            <h3>✅ Pesanan Selesai</h3>
+            <p id="pesananSelesai">0</p>
+          </div>
+          <div class="card stat-card">
+            <h3>💬 Kritik Baru</h3> <p id="totalKritik" style="color: #d35400;">0</p>
+          </div>
+          <div class="card stat-card">
+            <h3>👥 Total Pengguna</h3>
+            <p id="jumlahPengguna">0</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="statistik-metode">
+        <h2>💳 Statistik Metode Pembayaran</h2>
+        <div class="grid">
+          <div class="card metode-card">
+            <h4>💵 Tunai</h4>
+            <p id="tunaiCount">0</p>
+          </div>
+          <div class="card metode-card">
+            <h4>🏦 Transfer</h4>
+            <p id="transferCount">0</p>
+          </div>
+          <div class="card metode-card">
+            <h4>📱 QRIS</h4>
+            <p id="qrisCount">0</p>
+          </div>
+          <div class="card metode-card">
+            <h4>💳 VA / Kartu</h4>
+            <p id="vaCount">0</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="tabel-terbaru">
+        <h2>🕓 Riwayat Pesanan Terbaru</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Layanan</th>
+              <th>Berat</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Bayar</th>
+            </tr>
+          </thead>
+          <tbody id="tabelPesananTerbaru">
+            <tr><td colspan="6" style="text-align:center;">🔄 Memuat data...</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

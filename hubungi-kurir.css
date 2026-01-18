@@ -1,0 +1,164 @@
+/* RESET DASAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f7fbff;
+  padding: 2rem;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #0066cc;
+}
+
+header p {
+  margin-top: 0.3rem;
+  color: #555;
+}
+
+.btn-back {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #0066cc;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #0056b3;
+}
+
+hr {
+  margin-top: 1.5rem;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+main {
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.order-info-card, .courier-contact-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.order-info-card h2, .courier-contact-card h2 {
+  font-size: 1.4rem;
+  color: #0d47a1;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.order-info-card p, .courier-details p {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+  text-align: left; /* Ensure text aligns left within card */
+}
+
+.order-info-card p strong, .courier-details p strong {
+  color: #1a1a1a;
+  display: inline-block;
+  min-width: 130px; /* Align labels */
+}
+
+.courier-details {
+  margin-bottom: 1.5rem;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.btn-contact {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  display: flex; /* For icon and text alignment */
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-contact.call {
+  background-color: #28a745; /* Green */
+}
+
+.btn-contact.call:hover {
+  background-color: #218838;
+}
+
+.btn-contact.whatsapp {
+  background-color: #25d366; /* WhatsApp Green */
+}
+
+.btn-contact.whatsapp:hover {
+  background-color: #1da851;
+}
+
+.note {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  main {
+    gap: 1rem;
+  }
+
+  .order-info-card, .courier-contact-card {
+    padding: 1.5rem;
+  }
+
+  .order-info-card p strong, .courier-details p strong {
+    min-width: 100px;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+  }
+}

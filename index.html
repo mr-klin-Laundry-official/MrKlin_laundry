@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login & Daftar - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="index.css" />
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="left-panel">
+      <h1>MR KLIN LAUNDRY</h1>
+      <p>NO.1 FRANCHISE LAUNDRY SEJAK 2009</p>
+      <button id="btnStart">GET STARTED</button>
+      <hr style="width: 60%; margin: 2rem 0; border: 1px solid rgba(255,255,255,0.4)" />
+      <p style="font-size: 0.9rem; opacity: 0.8;">Nikmati layanan laundry cepat, bersih, dan profesional hanya di MR KLIN.</p>
+    </div>
+
+    <div class="right-panel">
+      <h2 style="color:#1565c0; font-size:1.8rem; margin-bottom:0.3rem;">Login / Register</h2>
+      <p style="margin-bottom:1rem;">Ayo Bergabung Menjadi Member!</p>
+
+      <form id="loginForm">
+        <label for="username">👤 Nama Lengkap</label>
+        <input type="text" id="username" placeholder="Masukkan nama Anda" required />
+
+        <label for="telepon">📱 Nomor WhatsApp</label>
+        <input type="number" id="telepon" placeholder="Contoh: 08123456789" required />
+
+        <label for="alamat">🏠 Alamat</label>
+        <input type="text" id="alamat" placeholder="Masukkan alamat domisili" required />
+
+        <label for="password">🔒 Password</label>
+        <div class="password-group">
+          <input type="password" id="password" placeholder="Password" required />
+          <input type="password" id="ulangi" placeholder="Ulangi Password" required />
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="syarat" />
+          <label for="syarat">Saya menyetujui syarat & ketentuan</label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="guest" />
+          <label for="guest">Masuk sebagai tamu</label>
+        </div>
+
+        <button type="submit">🚀 DAFTAR & MASUK</button>
+        
+        <button type="button" id="googleBtn" style="background-color:#db4437;">🔎 Daftar dengan Google</button>
+        
+        <a href="login.html" id="loginLink">🔁 Sudah Punya Akun? Masuk di sini</a>
+
+        <div style="margin-top: 1.5rem; text-align:center;">
+          <hr style="margin: 1rem 0;" />
+          <p style="font-size: 0.9rem; color: #555;">🔐 Admin Area</p>
+          <button type="button" onclick="window.location.href='admin.html'" style="background-color:#333;">Masuk sebagai Admin</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

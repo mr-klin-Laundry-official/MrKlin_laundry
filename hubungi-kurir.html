@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hubungi Kurir - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="hubungi-kurir.css" />
+  <script src="hubungi-kurir.js" defer></script>
+</head>
+<body>
+  <header class="hubungi-kurir-header">
+    <h1>📞 Hubungi Kurir Anda</h1>
+    <p>Informasi kurir untuk pesanan Anda.</p>
+    <a href="riwayat.html" class="btn-back">⬅ Kembali ke Riwayat Pesanan</a>
+    <hr />
+  </header>
+
+  <main>
+    <section class="order-info-card">
+      <h2>🧾 Detail Pesanan</h2>
+      <p><strong>ID Pesanan:</strong> <span id="orderIdDisplay">-</span></p>
+      <p><strong>Nama Pelanggan:</strong> <span id="customerNameDisplay">-</span></p>
+      <p><strong>Layanan:</strong> <span id="serviceTypeDisplay">-</span></p>
+      <p><strong>Status Pesanan:</strong> <span id="orderStatusDisplay">-</span></p>
+    </section>
+
+    <section class="courier-contact-card">
+      <h2>🧑‍✈️ Informasi Kontak Kurir</h2>
+      <div class="courier-details">
+        <p><strong>Nama Kurir:</strong> <span id="courierName">Joko Santoso</span></p>
+        <p><strong>Nomor Telepon:</strong> <span id="courierPhone">+62 812-9876-5432</span></p>
+        <p><strong>Estimasi Tiba:</strong> <span id="courierEta">15:00 - 17:00 WIB</span></p>
+      </div>
+      <div class="contact-actions">
+        <a id="callCourierBtn" href="tel:+6281298765432" class="btn-contact call">📞 Telepon Kurir</a>
+        <a id="waCourierBtn" href="https://wa.me/6281298765432" target="_blank" class="btn-contact whatsapp">💬 WhatsApp Kurir</a>
+      </div>
+      <p class="note">* Kurir akan aktif dan bisa dihubungi saat pesanan Anda dalam status "Dikirim".</p>
+    </section>
+  </main>
+
+  <footer>
+    <hr />
+    <p style="text-align: center;">&copy; 2025 MR KLIN LAUNDRY | Layanan Pelanggan Terbaik</p>
+  </footer>
+</body>
+</html>

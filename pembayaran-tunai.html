@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pembayaran Tunai - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="pembayaran.css" />
+</head>
+<body>
+  <h1>🧾 Pembayaran Tunai</h1>
+  <p>Silakan siapkan uang pas sesuai total pesanan Anda.</p>
+  <p>Kurir kami akan menjemput dan menerima pembayaran secara langsung.</p>
+  <p><strong>Total Tagihan:</strong> <span id="totalHarga">Rp0</span></p>
+  <p>Terima kasih atas kepercayaan Anda.</p>
+  <a href="riwayat.html">➡️ Lihat Riwayat Pesanan</a>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem("riwayatPesanan"));
+    if (data) {
+      document.getElementById("totalHarga").textContent =
+        "Rp" + data.totalHarga.toLocaleString("id-ID");
+    }
+  </script>
+</body>
+</html>

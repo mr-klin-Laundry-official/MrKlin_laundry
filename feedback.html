@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kritik & Saran - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <script src="dashboard.js" defer></script>
+  
+  <style>
+    .form-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+      max-width: 700px;
+      margin: 0 auto; /* Tengah halaman */
+    }
+    .form-title {
+      text-align: center;
+      color: #1565c0;
+      margin-bottom: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #333;
+    }
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background-color: #1565c0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover {
+      background-color: #0d47a1;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>MR KLIN LAUNDRY</h2>
+        <p>NO.1 FRANCHISE LAUNDRY</p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="dashboard.html">🏠 Dashboard</a></li>
+          <li><a href="booking.html">🧾 Pemesanan</a></li>
+          <li><a href="order.html">📦 Order</a></li>
+          <li><a href="payment.html">💳 Pembayaran</a></li>
+          <li><a href="riwayat.html">📄 Riwayat Pesanan</a></li>
+          <li><a href="apps.html">📱 Download Apps</a></li>
+          <li><a href="hubungi.html">☎️ Hubungi Kami</a></li>
+          <li><a href="feedback.html" class="active">💬 Kritik & Saran</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <h2>💬 Kritik & Saran</h2>
+        <div class="profile-container">
+          <div class="profile-icon" id="profileBtn">👤</div>
+          <div class="profile-dropdown hidden" id="profileDropdown">
+            <a href="profil.html">👤 Lihat Profil</a>
+            <a href="index.html">🚪 Keluar</a>
+          </div>
+        </div>
+      </header>
+
+      <section class="dashboard-features">
+        <div class="form-container">
+          <h2 class="form-title">Sampaikan Masukan Anda</h2>
+          <p style="text-align: center; margin-bottom: 20px; color: #666;">
+            Masukan Anda sangat berharga untuk meningkatkan kualitas layanan kami.
+          </p>
+          
+          <form id="feedbackForm">
+            <div class="form-group">
+              <label for="fbName">Nama Lengkap</label>
+              <input type="text" id="fbName" placeholder="Nama Anda" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="fbCategory">Kategori Masukan</label>
+              <select id="fbCategory">
+                <option value="Pelayanan">Pelayanan Staff</option>
+                <option value="Kualitas">Kualitas Cucian</option>
+                <option value="Waktu">Ketepatan Waktu</option>
+                <option value="Aplikasi">Aplikasi / Website</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="fbMessage">Pesan / Kritik</label>
+              <textarea id="fbMessage" rows="5" placeholder="Tuliskan keluhan atau saran Anda di sini..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">🚀 Kirim Masukan</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

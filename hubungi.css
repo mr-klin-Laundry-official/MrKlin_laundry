@@ -1,0 +1,109 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8fbff;
+  padding: 2rem;
+  color: #333;
+}
+
+h1, h2 {
+  color: #0066cc;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.btn-back {
+  display: block;
+  text-align: center;
+  margin: 1rem auto;
+  background-color: #0066cc;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+hr {
+  margin-top: 1rem;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+.kontak-langsung {
+  background: white;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.kontak-langsung ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.kontak-langsung li {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.kontak-langsung a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.kontak-langsung a:hover {
+  text-decoration: underline;
+}
+
+.form-section {
+  background: white;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form button {
+  background-color: #28a745;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #218838;
+}
+
+.hubungi-footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #888;
+}

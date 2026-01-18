@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Konfirmasi Transfer - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="pembayaran.css" />
+  <script src="upload-bukti.js" defer></script>
+  <style>
+    /* CSS Tambahan untuk Area Upload */
+    .upload-area { margin-top: 2rem; background: #fff; padding: 1.5rem; border-radius: 8px; border: 2px dashed #1976d2; text-align: center; }
+    #previewImg { max-width: 100%; height: auto; margin-top: 10px; border-radius: 8px; display: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    input[type="file"] { margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>🏦 Transfer Bank</h2>
+    <p>Silakan transfer sesuai total tagihan ke rekening berikut:</p>
+    <div style="background: #e3f2fd; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center;">
+      <h3>BCA: 1234-5678-90</h3>
+      <p>A.N MR KLIN LAUNDRY</p>
+    </div>
+
+    <div class="upload-area">
+      <h3>📤 Konfirmasi Pembayaran</h3>
+      <p>Sudah transfer? Upload foto struk/bukti transfer di sini agar pesanan diproses.</p>
+      
+      <form id="formBukti">
+        <input type="file" id="inputBukti" accept="image/*" required />
+        <br />
+        <img id="previewImg" alt="Preview Bukti" />
+        <br />
+        <button type="submit">🚀 Kirim Bukti Pembayaran</button>
+      </form>
+    </div>
+
+    <a href="riwayat.html" style="background:#666;">Kembali (Bayar Nanti)</a>
+  </main>
+</body>
+</html>

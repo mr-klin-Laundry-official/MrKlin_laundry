@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kelola Pesanan - Admin | MR KLIN</title>
+  <link rel="stylesheet" href="admin-pesanan.css" />
+  <script src="admin-pesanan.js" defer></script>
+</head>
+<body>
+  <header class="admin-header">
+    <h1>🧾 Kelola Pesanan Pengguna</h1>
+    <p>Lihat, ubah status, dan kelola data pesanan laundry dari seluruh pengguna.</p>
+    <a href="admin-dashboard.html" class="btn-back">⬅ Kembali ke Dashboard</a>
+  </header>
+
+  <main>
+    <section class="table-container">
+      <table id="tabelPesanan">
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Layanan</th>
+            <th>Berat</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Metode</th>
+            <th>Bukti</th> <th>Waktu</th>
+            <th>🛠️ Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          </tbody>
+      </table>
+    </section>
+  </main>
+
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="imgDisplay">
+  </div>
+
+  <footer>
+    <hr />
+    <p style="text-align: center;">&copy; 2025 MR KLIN LAUNDRY | Panel Admin Pesanan</p>
+  </footer>
+</body>
+</html>

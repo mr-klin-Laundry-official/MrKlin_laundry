@@ -1,0 +1,26 @@
+.step-box {
+  background: #e0e0e0;
+  padding: 10px;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+  transition: 0.3s;
+  position: relative;
+}
+
+.step-box.aktif {
+  background: #1565c0;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.step-num {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.step-label {
+  font-size: 0.9rem;
+}

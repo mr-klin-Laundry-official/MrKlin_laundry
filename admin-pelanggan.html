@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Pelanggan - Admin | MR KLIN</title>
+  <link rel="stylesheet" href="admin-pelanggan.css" />
+  <script src="admin-pelanggan.js" defer></script>
+</head>
+<body>
+  <header class="admin-header">
+    <h1>👥 Data Pelanggan Terdaftar</h1>
+    <p>Lihat dan kelola informasi dasar dari seluruh pelanggan MR KLIN LAUNDRY.</p>
+    <a href="admin-dashboard.html" class="btn-back">⬅ Kembali ke Dashboard</a>
+  </header>
+
+  <main>
+    <section class="table-container">
+      <table id="tabelPelanggan">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nama Lengkap</th>
+            <th>Email</th>
+            <th>Alamat</th>
+          </tr>
+        </thead>
+        <tbody>
+          </tbody>
+      </table>
+      <p id="noDataMessage" style="text-align: center; margin-top: 1rem; display: none;">Tidak ada data pelanggan yang ditemukan.</p>
+    </section>
+  </main>
+
+  <footer>
+    <hr />
+    <p style="text-align: center;">&copy; 2025 MR KLIN LAUNDRY | Panel Admin Data Pelanggan</p>
+  </footer>
+</body>
+</html>

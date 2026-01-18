@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Konfirmasi DP - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="order.css" />
+  <script src="order.js" defer></script>
+</head>
+<body>
+  <header class="header-wrapper">
+    <h1>🧾 Rincian Tagihan (DP)</h1>
+    <p>Mohon periksa ringkasan pesanan Anda sebelum melakukan pembayaran DP.</p>
+    <nav>
+      <a href="dashboard.html">🏠 Dashboard</a> |
+      <a href="booking.html">⬅ Kembali</a>
+    </nav>
+    <hr />
+  </header>
+
+  <main>
+    <div class="order-summary-card">
+      <h3>Detail Pemesanan</h3>
+      
+      <div class="summary-row">
+        <span>👤 Nama Pemesan:</span>
+        <strong id="outNama">-</strong>
+      </div>
+      
+      <div class="summary-row">
+        <span>⚙️ Layanan:</span>
+        <strong id="outLayanan">-</strong>
+      </div>
+      
+      <div class="summary-row">
+        <span>📅 Jadwal Jemput:</span>
+        <strong id="outJadwal">-</strong>
+      </div>
+      
+      <div class="summary-row">
+        <span>🏠 Alamat:</span>
+        <span id="outAlamat">-</span>
+      </div>
+
+      <hr style="margin: 1.5rem 0; border: 0; border-top: 1px dashed #ccc;">
+
+      <div class="summary-row">
+        <span>⚖️ Berat Cucian:</span>
+        <span style="color: orange; font-weight: bold; background: #fff3cd; padding: 2px 8px; border-radius: 4px;">
+          ⏳ Akan ditimbang oleh Kurir
+        </span>
+      </div>
+
+      <div class="summary-row total-row">
+        <span>💰 Total DP (Biaya Jemput):</span>
+        <span id="outTotal" class="total-price">Rp 0</span>
+      </div>
+
+      <p class="info-text">
+        *Pelunasan akan diinformasikan setelah cucian ditimbang di outlet.
+      </p>
+
+      <button id="btnBayar">💳 Lanjut Bayar DP Sekarang</button>
+      <button id="btnBatal" style="background-color: #e74c3c; margin-top: 10px;">❌ Batalkan Pesanan</button>
+    </div>
+  </main>
+
+  <footer>
+    <hr />
+    <p style="text-align: center;">&copy; 2025 MR KLIN LAUNDRY | Layanan Cepat & Terpercaya</p>
+  </footer>
+</body>
+</html>

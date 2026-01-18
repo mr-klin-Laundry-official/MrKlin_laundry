@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>MR KLIN LAUNDRY</h2>
+        <p>NO.1 FRANCHISE LAUNDRY SEJAK 2009</p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="dashboard.html" class="active">🏠 Dashboard</a></li>
+          <li><a href="booking.html">🧾 Pemesanan</a></li>
+          <li><a href="order.html">📦 Order</a></li>
+          <li><a href="payment.html">💳 Pembayaran</a></li>
+          <li><a href="riwayat.html">📄 Riwayat Pesanan</a></li>
+          <li><a href="apps.html">📱 Download Apps</a></li>
+          <li><a href="hubungi.html">☎️ Hubungi Kami</a></li>
+          <li><a href="feedback.html">💬 Kritik & Saran</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <nav>
+          <a href="dashboard.html" class="active">Home</a>
+          <a href="tentang.html">Tentang</a>
+        </nav>
+        <div class="search-profile">
+          <input type="text" id="searchInput" placeholder="Cari fitur..." />
+          <button id="searchBtn">Cari</button>
+          <div class="profile-container">
+            <div class="profile-icon" id="profileBtn">👤</div>
+            <div class="profile-dropdown hidden" id="profileDropdown">
+              <a href="profil.html">👤 Lihat Profil</a>
+              <a href="index.html">🚪 Keluar</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="dashboard-features">
+        <h1>Selamat Datang di MR KLIN LAUNDRY</h1>
+        <p>Gunakan fitur-fitur berikut untuk mengelola layanan laundry Anda dengan cepat dan mudah.</p>
+        <div class="feature-grid">
+          <a href="booking.html" class="feature-card">
+            <img src="assets/booking.png" alt="Pemesanan" />
+            <h3>🧾 Pemesanan</h3>
+            <p>Jadwalkan penjemputan laundry Anda.</p>
+          </a>
+          <a href="order.html" class="feature-card">
+            <img src="assets/order.png" alt="Order" />
+            <h3>📦 Order</h3>
+            <p>Lihat dan pantau status pesanan Anda.</p>
+          </a>
+          <a href="payment.html" class="feature-card">
+            <img src="assets/payment.png" alt="Pembayaran" />
+            <h3>💳 Pembayaran</h3>
+            <p>Selesaikan pembayaran secara online.</p>
+          </a>
+          <a href="riwayat.html" class="feature-card">
+            <img src="assets/history.png" alt="Riwayat" />
+            <h3>📄 Riwayat</h3>
+            <p>Telusuri transaksi dan riwayat pesanan.</p>
+          </a>
+          <a href="apps.html" class="feature-card">
+            <img src="assets/apps.png" alt="Apps" />
+            <h3>📱 Aplikasi</h3>
+            <p>Unduh aplikasi MR KLIN.</p>
+          </a>
+          <a href="hubungi.html" class="feature-card">
+            <img src="assets/contact.png" alt="Kontak" />
+            <h3>☎️ Hubungi Kami</h3>
+            <p>Ajukan pertanyaan langsung.</p>
+          </a>
+          <a href="feedback.html" class="feature-card">
+            <h3 style="margin-top: 10px;">💬 Kritik & Saran</h3>
+            <p>Berikan masukan untuk layanan kami.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="dashboard-analytics">
+        <h2>📊 Analytics</h2>
+        <div class="analytics-grid">
+          <div class="card analytics">
+            <p>Total Sessions</p> <h3>24,589</h3> <span class="positive">⬆ 12.5%</span>
+          </div>
+          <div class="card analytics">
+            <p>Total Sales</p> <h3>$45,280</h3> <span class="positive">⬆ 8.2%</span>
+          </div>
+          </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

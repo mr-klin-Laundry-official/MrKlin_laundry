@@ -1,0 +1,140 @@
+/* RESET DASAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom right, #e3f2fd, #bbdefb);
+  color: #333;
+  line-height: 1.6;
+  padding: 2rem;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header-wrapper h1 {
+  font-size: 2rem;
+  color: #1976d2;
+}
+
+.header-wrapper p {
+  font-size: 1rem;
+  color: #555;
+}
+
+header nav {
+  margin-top: 0.5rem;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #1976d2;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* MAIN */
+main {
+  max-width: 800px;
+  margin: auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* FORM */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+fieldset {
+  border: 2px solid #90caf9;
+  border-radius: 10px;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+}
+
+legend {
+  font-weight: bold;
+  color: #1976d2;
+  padding: 0 12px;
+  font-size: 1.1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline-color: #64b5f6;
+}
+
+#totalHarga {
+  background-color: #f0f4ff;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  color: #0d47a1;
+  font-weight: bold;
+}
+
+/* BUTTON */
+button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button[type="submit"] {
+  background-color: #1976d2;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #1565c0;
+}
+
+button[type="reset"] {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  margin-top: 0.5rem;
+}
+
+button[type="reset"]:hover {
+  background-color: #bbdefb;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}

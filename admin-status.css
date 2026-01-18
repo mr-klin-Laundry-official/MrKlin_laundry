@@ -1,0 +1,153 @@
+/* RESET DASAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  color: #333;
+}
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+  font-size: 2rem;
+  color: #1565c0;
+}
+
+.admin-header p {
+  margin-top: 0.3rem;
+  color: #555;
+}
+
+.btn-back {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #1565c0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #0d47a1;
+}
+
+.filter-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.filter-section label {
+  margin-right: 0.5rem;
+  font-weight: 600;
+}
+
+.filter-section select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+
+.table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px; /* Minimal width for table on smaller screens */
+}
+
+th, td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+}
+
+th {
+  background-color: #f1f1f1;
+  color: #333;
+  font-weight: 600;
+}
+
+td .status {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+/* Status colors (reused from admin-pesanan.css) */
+.status.Selesai {
+  background-color: #c8e6c9; /* Light Green */
+  color: #256029; /* Dark Green */
+}
+
+.status.Dalam { /* For 'Dalam Proses' / 'Dalam Antrian' */
+  background-color: #fff9c4; /* Light Yellow */
+  color: #9e7c00; /* Dark Yellow */
+}
+
+.status.Menunggu,
+.status["Menunggu Proses"] {
+  background-color: #ffe0b2; /* Light Orange */
+  color: #ef6c00; /* Dark Orange */
+}
+
+.status.Dikirim {
+  background-color: #b3e5fc; /* Light Blue */
+  color: #0277bd; /* Dark Blue */
+}
+
+.status.Dibatalkan {
+  background-color: #ffcdd2; /* Light Red */
+  color: #c62828; /* Dark Red */
+}
+
+td .btn-detail {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #1565c0;
+  color: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease;
+}
+
+td .btn-detail:hover {
+  background-color: #0d47a1;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  table {
+    font-size: 0.85rem;
+    min-width: 100%;
+  }
+
+  th, td {
+    padding: 0.6rem 0.7rem;
+  }
+}

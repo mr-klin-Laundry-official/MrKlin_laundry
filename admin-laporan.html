@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laporan - Admin | MR KLIN</title>
+  <link rel="stylesheet" href="admin-laporan.css" />
+  <script src="admin-laporan.js" defer></script>
+</head>
+<body>
+  <header class="admin-header">
+    <h1>📈 Laporan & Statistik</h1>
+    <p>Ringkasan data pesanan, pendapatan, dan metrik penting lainnya untuk analisis.</p>
+    <a href="admin-dashboard.html" class="btn-back">⬅ Kembali ke Dashboard</a>
+  </header>
+
+  <main>
+    <section class="laporan-section">
+      <h2>Ringkasan Pendapatan</h2>
+      <div class="card-laporan">
+        <h3>Total Pendapatan Bersih</h3>
+        <p id="totalPendapatan">Rp 0</p>
+      </div>
+    </section>
+
+    <section class="laporan-section">
+      <h2>Statistik Pesanan</h2>
+      <div class="grid-laporan">
+        <div class="card-laporan">
+          <h3>Jumlah Pesanan Total</h3>
+          <p id="laporanTotalPesanan">0</p>
+        </div>
+        <div class="card-laporan">
+          <h3>Pesanan Selesai</h3>
+          <p id="laporanPesananSelesai">0</p>
+        </div>
+        <div class="card-laporan">
+          <h3>Pesanan Dalam Proses</h3>
+          <p id="laporanPesananProses">0</p>
+        </div>
+        <div class="card-laporan">
+          <h3>Pesanan Dibatalkan</h3>
+          <p id="laporanPesananDibatalkan">0</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="laporan-section">
+      <h2>Distribusi Metode Pembayaran</h2>
+      <div class="grid-laporan">
+        <div class="card-laporan">
+          <h3>Tunai</h3>
+          <p id="laporanTunai">0</p>
+        </div>
+        <div class="card-laporan">
+          <h3>Transfer Bank</h3>
+          <p id="laporanTransfer">0</p>
+        </div>
+        <div class="card-laporan">
+          <h3>QRIS</h3>
+          <p id="laporanQris">0</p>
+        </div>
+        <div class="card-laporan">
+          <h3>VA / Kartu Kredit</h3>
+          <p id="laporanVaKartu">0</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="laporan-section">
+        <h2>Riwayat Transaksi Lengkap</h2>
+        <div class="table-container">
+            <table id="tabelLaporanTransaksi">
+                <thead>
+                    <tr>
+                        <th>ID Pesanan</th>
+                        <th>Nama</th>
+                        <th>Layanan</th>
+                        <th>Berat</th>
+                        <th>Total Harga</th>
+                        <th>Status</th>
+                        <th>Pembayaran</th>
+                        <th>Waktu Order</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+            <p id="noTransaksiMessage" style="text-align: center; margin-top: 1rem; display: none;">Tidak ada riwayat transaksi.</p>
+        </div>
+    </section>
+  </main>
+
+  <footer>
+    <hr />
+    <p style="text-align: center;">&copy; 2025 MR KLIN LAUNDRY | Laporan Analisis</p>
+  </footer>
+</body>
+</html>

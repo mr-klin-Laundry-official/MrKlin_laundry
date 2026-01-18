@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pemesanan Layanan Laundry - MR KLIN LAUNDRY</title>
+  <!-- Tautan ke file CSS -->
+  <link rel="stylesheet" href="booking.css" />
+  <!-- Tautan ke file JavaScript -->
+  <script src="booking.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-wrapper">
+      <h1>🧺 MR KLIN LAUNDRY</h1>
+      <p>Layanan Laundry Terpercaya Sejak 2009</p>
+      <nav>
+        <a href="dashboard.html">🏠 Dashboard</a> |
+        <a href="riwayat.html">📄 Riwayat</a> |
+        <a href="hubungi.html">☎️ Hubungi Kami</a>
+      </nav>
+    </div>
+    <hr />
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section>
+      <h2>🧾 Form Pemesanan Layanan</h2>
+      <p>Isi data lengkap untuk melanjutkan ke tahap pemesanan layanan laundry.</p>
+
+      <form id="formBooking">
+        <!-- DATA DIRI -->
+        <fieldset>
+          <legend>👤 Data Pemesan</legend>
+
+          <label for="nama">Nama Lengkap:</label>
+          <input type="text" id="nama" name="nama" placeholder="Nama lengkap" required />
+
+          <label for="telepon">Nomor WhatsApp:</label>
+          <input type="tel" id="telepon" name="telepon" placeholder="08XXXXXXXXXX" required />
+
+          <label for="alamat">Alamat Penjemputan / Pengantaran:</label>
+          <textarea id="alamat" name="alamat" rows="3" placeholder="Contoh: Jl. Melati No. 10, Surabaya" required></textarea>
+        </fieldset>
+
+        <!-- JADWAL & METODE -->
+        <fieldset>
+          <legend>📆 Jadwal dan Metode Layanan</legend>
+
+          <label for="tanggal">Pilih Tanggal (Tahun 2025):</label>
+          <input type="date" id="tanggal" name="tanggal" min="2025-01-01" max="2025-12-31" required />
+
+          <label for="jam">Pilih Jam:</label>
+          <select id="jam" name="jam" required>
+            <option value="">-- Pilih Jam --</option>
+            <option value="08:00">08:00 - 10:00</option>
+            <option value="10:00">10:00 - 12:00</option>
+            <option value="13:00">13:00 - 15:00</option>
+            <option value="15:00">15:00 - 17:00</option>
+          </select>
+
+                  <label>Metode Layanan:</label>
+        <div style="display: flex; gap: 20px; margin-top: 8px;">
+          <label style="display: inline-flex; align-items: center; gap: 8px;">
+            <input type="radio" id="antar" name="layanan" value="Diantar" required />
+            Diantar ke alamat
+          </label>
+          <label style="display: inline-flex; align-items: center; gap: 8px;">
+            <input type="radio" id="ambil" name="layanan" value="Ambil Sendiri" />
+            Ambil sendiri ke outlet
+          </label>
+        </div>
+
+        <!-- CATATAN TAMBAHAN -->
+        <fieldset>
+          <legend>📝 Catatan Tambahan</legend>
+          <label for="catatan">Permintaan Khusus (opsional):</label>
+          <textarea id="catatan" name="catatan" rows="2" placeholder="Contoh: Jangan gunakan pewangi, laundry express, dll."></textarea>
+        </fieldset>
+
+        <!-- KONFIRMASI -->
+        <div class="confirmation">
+          <input type="checkbox" id="konfirmasi" name="konfirmasi" required />
+          <label for="konfirmasi">
+            Saya menyatakan bahwa data yang saya isi sudah benar.
+          </label>
+        </div>
+
+        <!-- TOMBOL -->
+        <button type="submit">➡️ Lanjut ke Order</button>
+        <button type="reset">🔄 Bersihkan Form</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <hr />
+    <p style="text-align: center;">&copy; 2025 MR KLIN LAUNDRY | Pemesanan online lebih mudah dan cepat 🚀</p>
+  </footer>
+</body>
+</html>

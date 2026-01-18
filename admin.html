@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Admin - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="admin.css" />
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <div class="admin-login-container">
+    <div class="admin-box">
+      <h1>🔐 Verifikasi Admin</h1>
+      <p>Masukkan kredensial untuk mengakses Panel Admin MR KLIN LAUNDRY</p>
+      
+      <form id="adminLoginForm">
+        <label for="adminUsername">👤 Username Admin</label>
+        <input type="text" id="adminUsername" placeholder="Masukkan username" required />
+
+        <label for="adminPassword">🔒 Password Admin</label>
+        <input type="password" id="adminPassword" placeholder="Masukkan password" required />
+
+        <button type="submit">Masuk ke Dashboard</button>
+        <a href="index.html" class="back-link">⬅️ Kembali ke Halaman Utama</a>
+      </form>
+
+      <div id="adminError" class="error-message" style="display:none;">
+        ❌ Username atau password salah!
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riwayat Pesanan - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="riwayat.css" />
+  <script src="riwayat.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header-riwayat">
+    <div class="header-content">
+      <h1>📄 Riwayat Pemesanan Anda</h1>
+      <p>Di bawah ini adalah daftar layanan laundry yang telah Anda pesan sebelumnya.</p>
+      <a href="dashboard.html" class="btn-back">🏠 Kembali ke Dashboard</a>
+    </div>
+    <hr />
+  </header>
+
+  <!-- FILTER & SORT -->
+  <section class="filter-section">
+    <label for="filterStatus">🔍 Filter Status:</label>
+    <select id="filterStatus">
+      <option value="all">Semua</option>
+      <option value="Menunggu Proses">Menunggu Proses</option>
+      <option value="Dalam Proses">Dalam Proses</option>
+      <option value="Selesai">Selesai</option>
+      <option value="Dibatalkan">Dibatalkan</option>
+    </select>
+
+    <label for="sortOrder">⬇️ Urutkan:</label>
+    <select id="sortOrder">
+      <option value="baru">Terbaru</option>
+      <option value="lama">Terlama</option>
+    </select>
+  </section>
+
+  <!-- MAIN RIWAYAT CONTENT -->
+  <main>
+    <div id="daftarRiwayat" class="riwayat-container">
+      <!-- Kartu riwayat dimuat oleh riwayat.js -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-riwayat">
+    <hr />
+    <p>&copy; 2025 MR KLIN LAUNDRY. Semua hak dilindungi. | No.1 Franchise Laundry Sejak 2009</p>
+  </footer>
+
+  <!-- MODAL DETAIL (untuk pengembangan selanjutnya) -->
+  <div id="modalDetail" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal" class="close-button">&times;</span>
+      <h2>🔎 Detail Pesanan</h2>
+      <div id="modalIsi"></div>
+    </div>
+  </div>
+</body>
+</html>

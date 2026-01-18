@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kelola Status Pesanan - Admin</title>
+  <link rel="stylesheet" href="ubah-status.css" />
+  <script src="ubah-status.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <h1>🧺 Kelola Status Pesanan</h1>
+      <p>Update status pesanan pelanggan secara real-time</p>
+      <a href="admin-dashboard.html" class="btn-back">← Dashboard</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Layanan</th>
+            <th>Total</th>
+            <th>Status Saat Ini</th>
+            <th>Ubah Status</th>
+          </tr>
+        </thead>
+        <tbody id="daftarPesanan">
+          <!-- Baris data diisi oleh JS -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>&copy; 2025 Sistem Pemesanan Laundry | Admin Panel</small>
+    </div>
+  </footer>
+</body>
+</html>

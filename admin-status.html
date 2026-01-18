@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Status Pengiriman - Admin | MR KLIN</title>
+  <link rel="stylesheet" href="admin-status.css" />
+  <script src="admin-status.js" defer></script>
+</head>
+<body>
+  <header class="admin-header">
+    <h1>🚚 Status Pengiriman Pesanan</h1>
+    <p>Pantau pesanan yang sedang dalam proses pengiriman atau telah selesai dikirim.</p>
+    <a href="admin-dashboard.html" class="btn-back">⬅ Kembali ke Dashboard</a>
+  </header>
+
+  <main>
+    <section class="filter-section">
+      <label for="filterStatus">Filter Status:</label>
+      <select id="filterStatus">
+        <option value="all">Semua Pesanan</option>
+        <option value="Dikirim">Hanya Dikirim</option>
+        <option value="Dalam Proses">Hanya Dalam Proses</option>
+        <option value="Selesai">Hanya Selesai</option>
+      </select>
+    </section>
+
+    <section class="table-container">
+      <table id="tabelPengiriman">
+        <thead>
+          <tr>
+            <th>Nama Pelanggan</th>
+            <th>Layanan</th>
+            <th>Berat</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Waktu Order</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          </tbody>
+      </table>
+      <p id="noDataMessage" style="text-align: center; margin-top: 1rem; display: none;">Tidak ada data pesanan yang sesuai.</p>
+    </section>
+  </main>
+
+  <footer>
+    <hr />
+    <p style="text-align: center;">&copy; 2025 MR KLIN LAUNDRY | Panel Admin Status Pengiriman</p>
+  </footer>
+</body>
+</html>

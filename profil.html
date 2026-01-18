@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil Saya - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="profil.css" />
+  <script src="profil.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="profil-header">
+    <h1>👤 Profil Pengguna</h1>
+    <p>Kelola informasi akun dan data pribadi Anda.</p>
+    <a href="dashboard.html" class="btn-back">🏠 Kembali ke Dashboard</a>
+    <hr />
+  </header>
+
+  <!-- FOTO PROFIL -->
+  <section class="foto-section">
+    <h2>📸 Foto Profil</h2>
+    <div class="foto-preview">
+      <img id="fotoPreview" src="assets/default-profile.png" alt="Foto Profil" />
+      <input type="file" id="fotoInput" accept="image/*" />
+    </div>
+  </section>
+
+  <!-- INFORMASI PENGGUNA -->
+  <section class="form-section">
+    <h2>📝 Informasi Pengguna</h2>
+    <form id="formProfil">
+      <label for="nama">Nama Lengkap:</label>
+      <input type="text" id="nama" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+
+      <label for="alamat">Alamat Lengkap:</label>
+      <textarea id="alamat" rows="3" required></textarea>
+
+      <button type="submit">💾 Simpan Perubahan</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="profil-footer">
+    <hr />
+    <p style="text-align:center;">&copy; 2025 MR KLIN LAUNDRY | Data Anda Aman & Terenkripsi</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pembayaran - MR KLIN LAUNDRY</title>
+  <link rel="stylesheet" href="payment.css" />
+  <script src="payment.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <h1>💳 Metode Pembayaran</h1>
+    <p>Silakan pilih metode pembayaran dan konfirmasi pesanan Anda.</p>
+    <hr />
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- RINGKASAN ORDER -->
+    <section>
+      <fieldset>
+        <legend>🧾 Ringkasan Pesanan</legend>
+        <p><strong>Nama:</strong> <span id="namaRingkasan">-</span></p>
+        <p><strong>Layanan:</strong> <span id="layananRingkasan">-</span></p>
+        <p><strong>Berat:</strong> <span id="beratRingkasan">-</span> kg</p>
+        <p><strong>Total Harga:</strong> <span id="hargaRingkasan">-</span></p>
+      </fieldset>
+    </section>
+
+    <!-- PILIH METODE PEMBAYARAN -->
+    <section>
+      <form id="formPembayaran">
+        <fieldset>
+          <legend>🪙 Pilih Metode Pembayaran</legend>
+
+          <label>
+            <input type="radio" name="metode" value="Tunai" required />
+            Tunai di tempat
+          </label><br />
+
+          <label>
+            <input type="radio" name="metode" value="Transfer" />
+            Transfer Bank
+          </label><br />
+
+          <label>
+            <input type="radio" name="metode" value="QRIS" />
+            QRIS (Scan)
+          </label><br />
+
+          <label>
+            <input type="radio" name="metode" value="VA" />
+            Virtual Account (BNI)
+          </label><br />
+
+          <label>
+            <input type="radio" name="metode" value="Kartu Kredit" />
+            Kartu Kredit (Online)
+          </label><br />
+        </fieldset>
+
+        <br />
+        <button type="submit">✅ Konfirmasi & Lanjut ke Instruksi</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <hr />
+    <p style="text-align: center;">&copy; 2025 MR KLIN LAUNDRY | Pembayaran Aman & Nyaman</p>
+  </footer>
+</body>
+</html>
