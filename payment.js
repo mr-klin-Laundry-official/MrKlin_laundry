@@ -3,74 +3,97 @@ document.addEventListener("DOMContentLoaded", () => {
   const layananEl = document.getElementById("layananRingkasan");
   const beratEl = document.getElementById("beratRingkasan");
   const hargaEl = document.getElementById("hargaRingkasan");
-
   const form = document.getElementById("formPembayaran");
 
-  // Ambil data pesanan aktif
-  const orderData = JSON.parse(localStorage.getItem("orderData"));
-  const semuaPesanan = JSON.parse(localStorage.getItem("pesanan")) || [];
+  // 1. AMBIL DATA PESANAN AKTIF
+  let orderData = JSON.parse(localStorage.getItem("orderData"));
+  let semuaPesanan = JSON.parse(localStorage.getItem("pesanan")) || [];
 
+  // Validasi: Jika data kosong, kembali ke riwayat
   if (!orderData) {
-    alert("Data pesanan tidak ditemukan. Silakan buat pesanan terlebih dahulu.");
-    window.location.href = "order.html";
+    alert("Sesi habis atau pesanan tidak ditemukan. Silakan ulangi dari Riwayat.");
+    window.location.href = "riwayat.html";
     return;
   }
 
-  // Tampilkan ringkasan data
-  namaEl.textContent = orderData.nama;
-  layananEl.textContent = orderData.tipeLayanan;
-  beratEl.textContent = orderData.berat + " kg";
-  hargaEl.textContent = `Rp${orderData.total.toLocaleString("id-ID")}`;
-
-  // Fungsi redirect berdasarkan metode pembayaran
-  function redirectToInstruction(metode) {
-    switch (metode) {
-      case "Transfer":
-        window.location.href = "pembayaran-transfer.html";
-        break;
-      case "QRIS":
-        window.location.href = "pembayaran-qris.html";
-        break;
-      case "Tunai":
-        window.location.href = "pembayaran-tunai.html";
-        break;
-      case "VA":
-        window.location.href = "pembayaran-va.html";
-        break;
-      case "Kartu Kredit":
-        window.location.href = "pembayaran-kartu.html";
-        break;
-      default:
-        alert("Metode tidak dikenali.");
-    }
+  // 2. TAMPILKAN RINGKASAN DI HALAMAN
+  if (namaEl) namaEl.textContent = orderData.nama;
+  if (layananEl) layananEl.textContent = orderData.layanan || orderData.tipeLayanan;
+  
+  if (hargaEl) {
+    // Cek apakah ini pelunasan (sisa tagihan) atau pembayaran awal (Total/DP)
+    const nominal = orderData.isPelunasan ? orderData.sisaTagihan : orderData.total;
+    hargaEl.textContent = "Rp " + (nominal || 0).toLocaleString("id-ID");
   }
 
-  // Handle submit form
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  if (beratEl) {
+    // Tampilkan berat jika sudah ada, atau "Akan ditimbang" jika DP
+    beratEl.textContent = (orderData.berat && orderData.berat > 0) ? orderData.berat + " kg" : "Akan ditimbang Kurir";
+  }
 
-    const metode = form.metode.value;
+  // 3. FUNGSI SUBMIT PEMBAYARAN
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    if (!metode) {
-      alert("Silakan pilih salah satu metode pembayaran.");
-      return;
-    }
+      // Cek Metode yang dipilih
+      const selectedOption = document.querySelector('input[name="metode"]:checked');
+      if (!selectedOption) {
+        alert("Harap pilih metode pembayaran terlebih dahulu!");
+        return;
+      }
+      const metode = selectedOption.value;
 
-    // Update data order aktif
-    orderData.metodePembayaran = metode;
-    orderData.status = "Menunggu Proses";
+      // Update Data Order
+      orderData.metodePembayaran = metode;
 
-    // Update array pesanan[]
-    const index = semuaPesanan.findIndex(p => p.id === orderData.id);
-    if (index !== -1) {
-      semuaPesanan[index] = orderData;
+      // Tentukan Status Baru
+      if (orderData.isPelunasan) {
+        // Jika ini pelunasan -> Status jadi "Diproses" (karena user sudah bayar sisa)
+        orderData.status = "Diproses";
+        orderData.sisaTagihan = 0; // Anggap lunas sementara (menunggu verifikasi jika transfer)
+      } else {
+        // Jika ini pembayaran awal (DP) -> Status "Menunggu Penjemputan"
+        orderData.status = "Menunggu Penjemputan";
+      }
+
+      // SIMPAN KE DATABASE UTAMA (ARRAY PESANAN)
+      const index = semuaPesanan.findIndex(p => p.id === orderData.id);
+      if (index !== -1) {
+        semuaPesanan[index] = orderData; // Update data lama
+      } else {
+        semuaPesanan.push(orderData); // Insert data baru
+      }
       localStorage.setItem("pesanan", JSON.stringify(semuaPesanan));
-    }
 
-    // Simpan ulang ke orderData
-    localStorage.setItem("orderData", JSON.stringify(orderData));
-
-    // Redirect ke instruksi pembayaran
-    redirectToInstruction(metode);
-  });
+      // === LOGIKA PENGALIHAN (CRUCIAL FIX) ===
+      
+      // KELOMPOK 1: PEMBAYARAN ONLINE (Butuh Upload Bukti)
+      // JANGAN HAPUS 'orderData' di sini, karena 'upload-bukti.js' membutuhkannya!
+      if (metode === "Transfer") {
+        localStorage.setItem("orderData", JSON.stringify(orderData)); // Pastikan tersimpan
+        window.location.href = "pembayaran-transfer.html";
+      } 
+      else if (metode === "QRIS") {
+        localStorage.setItem("orderData", JSON.stringify(orderData)); 
+        window.location.href = "pembayaran-qris.html";
+      } 
+      else if (metode === "VA") {
+        localStorage.setItem("orderData", JSON.stringify(orderData)); 
+        window.location.href = "pembayaran-va.html";
+      }
+      else if (metode === "Kartu Kredit") {
+        localStorage.setItem("orderData", JSON.stringify(orderData)); 
+        window.location.href = "pembayaran-kartu.html";
+      }
+      
+      // KELOMPOK 2: PEMBAYARAN OFFLINE (Tunai/COD)
+      // Boleh hapus 'orderData' karena transaksi dianggap selesai di tahap ini
+      else if (metode.includes("Tunai") || metode === "Tunai (Kurir)" || metode === "Tunai (Outlet)") {
+        localStorage.removeItem("orderData"); // Bersihkan sesi
+        alert("✅ Pesanan Dikonfirmasi! Silakan lakukan pembayaran tunai.");
+        window.location.href = "riwayat.html";
+      }
+    });
+  }
 });
