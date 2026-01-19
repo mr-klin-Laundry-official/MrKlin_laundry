@@ -3,71 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Konfirmasi DP - MR KLIN LAUNDRY</title>
+  <title>Detail Order - MR KLIN LAUNDRY</title>
   <link rel="stylesheet" href="order.css" />
   <script src="order.js" defer></script>
 </head>
 <body>
   <header class="header-wrapper">
-    <h1>🧾 Rincian Tagihan (DP)</h1>
-    <p>Mohon periksa ringkasan pesanan Anda sebelum melakukan pembayaran DP.</p>
+    <h1>⚖️ Detail & Berat Cucian</h1>
+    <p>Pilih metode penimbangan yang sesuai dengan kondisi Anda.</p>
     <nav>
-      <a href="dashboard.html">🏠 Dashboard</a> |
       <a href="booking.html">⬅ Kembali</a>
     </nav>
     <hr />
   </header>
 
   <main>
-    <div class="order-summary-card">
-      <h3>Detail Pemesanan</h3>
-      
-      <div class="summary-row">
-        <span>👤 Nama Pemesan:</span>
-        <strong id="outNama">-</strong>
-      </div>
-      
-      <div class="summary-row">
-        <span>⚙️ Layanan:</span>
-        <strong id="outLayanan">-</strong>
-      </div>
-      
-      <div class="summary-row">
-        <span>📅 Jadwal Jemput:</span>
-        <strong id="outJadwal">-</strong>
-      </div>
-      
-      <div class="summary-row">
-        <span>🏠 Alamat:</span>
-        <span id="outAlamat">-</span>
+    <form id="formOrder">
+      <fieldset>
+        <legend>👤 Data Pemesan</legend>
+        <p><strong>Nama:</strong> <span id="outNama">-</span></p>
+        <p><strong>Jadwal:</strong> <span id="outJadwal">-</span></p>
+        <p><strong>Alamat:</strong> <span id="outAlamat">-</span></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>⚖️ Metode Penimbangan</legend>
+        <p style="margin-bottom: 10px;">Apakah Anda memiliki timbangan di rumah?</p>
+        
+        <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
+          <label style="cursor: pointer; background: #e3f2fd; padding: 10px; border-radius: 8px; border: 1px solid #90caf9; flex: 1;">
+            <input type="radio" name="opsiTimbang" value="sendiri" />
+            ✅ <strong>Saya Timbang Sendiri</strong>
+            <br><small>Bayar Penuh (Estimasi)</small>
+          </label>
+
+          <label style="cursor: pointer; background: #fff3e0; padding: 10px; border-radius: 8px; border: 1px solid #ffcc80; flex: 1;">
+            <input type="radio" name="opsiTimbang" value="kurir" checked />
+            ❌ <strong>Biar Kurir Menimbang</strong>
+            <br><small>Bayar DP Rp 10.000</small>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset id="detailSection">
+        <legend>⚙️ Rincian Layanan</legend>
+
+        <label>Jenis Layanan:</label>
+        <select id="tipeLayanan" required>
+          <option value="Cuci Komplit">Cuci Komplit (Rp 8.000/kg)</option>
+          <option value="Cuci Kering">Cuci Kering (Rp 6.000/kg)</option>
+          <option value="Setrika Saja">Setrika Saja (Rp 5.000/kg)</option>
+          <option value="Express">⚡ Express (Rp 12.000/kg)</option>
+        </select>
+
+        <div id="inputBeratContainer" class="hidden" style="display:none;">
+          <label style="margin-top: 10px;">Berat Cucian (Kg):</label>
+          <input type="number" id="berat" min="1" step="0.1" placeholder="Contoh: 3.5" />
+        </div>
+
+        <div id="infoKurirContainer">
+          <p style="background: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 0.9rem; border: 1px solid #ffeeba;">
+            ℹ️ <strong>Info:</strong> Berat akan ditentukan saat kurir menjemput. <br>
+            Anda cukup membayar <strong>DP (Biaya Jemput)</strong> saat ini.
+          </p>
+        </div>
+      </fieldset>
+
+      <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; text-align: center; margin-top: 10px; border: 1px solid #d1e9ff;">
+        <span id="labelTotal">Total Tagihan (DP):</span>
+        <h2 id="totalHarga" style="color: #1976d2;">Rp 10.000</h2>
       </div>
 
-      <hr style="margin: 1.5rem 0; border: 0; border-top: 1px dashed #ccc;">
-
-      <div class="summary-row">
-        <span>⚖️ Berat Cucian:</span>
-        <span style="color: orange; font-weight: bold; background: #fff3cd; padding: 2px 8px; border-radius: 4px;">
-          ⏳ Akan ditimbang oleh Kurir
-        </span>
-      </div>
-
-      <div class="summary-row total-row">
-        <span>💰 Total DP (Biaya Jemput):</span>
-        <span id="outTotal" class="total-price">Rp 0</span>
-      </div>
-
-      <p class="info-text">
-        *Pelunasan akan diinformasikan setelah cucian ditimbang di outlet.
-      </p>
-
-      <button id="btnBayar">💳 Lanjut Bayar DP Sekarang</button>
-      <button id="btnBatal" style="background-color: #e74c3c; margin-top: 10px;">❌ Batalkan Pesanan</button>
-    </div>
+      <button type="submit" id="btnLanjut" style="width: 100%; margin-top: 20px;">💳 Lanjut ke Pembayaran</button>
+    </form>
   </main>
-
-  <footer>
-    <hr />
-    <p style="text-align: center;">&copy; 2025 MR KLIN LAUNDRY | Layanan Cepat & Terpercaya</p>
-  </footer>
 </body>
 </html>
