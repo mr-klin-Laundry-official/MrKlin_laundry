@@ -6,70 +6,70 @@
   <title>Pembayaran - MR KLIN LAUNDRY</title>
   <link rel="stylesheet" href="payment.css" />
   <script src="payment.js" defer></script>
+  <style>
+    /* CSS Opsional agar pilihan terlihat jelas */
+    .payment-option {
+      display: block; margin-bottom: 12px; cursor: pointer;
+      background: #fff; padding: 15px; border: 1px solid #ddd; border-radius: 8px;
+    }
+    .payment-option:hover { background-color: #f0f8ff; border-color: #1976d2; }
+    .payment-option strong { color: #333; font-size: 1.05rem; }
+    .payment-option small { display: block; margin-left: 25px; color: #666; font-size: 0.85rem; }
+  </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header>
     <h1>💳 Metode Pembayaran</h1>
-    <p>Silakan pilih metode pembayaran dan konfirmasi pesanan Anda.</p>
+    <p>Silakan pilih cara pembayaran.</p>
     <hr />
   </header>
 
-  <!-- MAIN CONTENT -->
   <main>
-    <!-- RINGKASAN ORDER -->
     <section>
       <fieldset>
-        <legend>🧾 Ringkasan Pesanan</legend>
+        <legend>🧾 Ringkasan Tagihan</legend>
         <p><strong>Nama:</strong> <span id="namaRingkasan">-</span></p>
         <p><strong>Layanan:</strong> <span id="layananRingkasan">-</span></p>
-        <p><strong>Berat:</strong> <span id="beratRingkasan">-</span> kg</p>
-        <p><strong>Total Harga:</strong> <span id="hargaRingkasan">-</span></p>
+        <p><strong>Berat:</strong> <span id="beratRingkasan">-</span></p>
+        <p><strong>Total:</strong> <span id="hargaRingkasan" style="color:#1976d2; font-weight:bold;">-</span></p>
       </fieldset>
     </section>
 
-    <!-- PILIH METODE PEMBAYARAN -->
     <section>
       <form id="formPembayaran">
         <fieldset>
-          <legend>🪙 Pilih Metode Pembayaran</legend>
+          <legend>🪙 Pilih Cara Bayar</legend>
 
-          <label>
-            <input type="radio" name="metode" value="Tunai" required />
-            Tunai di tempat
-          </label><br />
+          <label class="payment-option">
+            <input type="radio" name="metode" value="Tunai (Kurir)" required />
+            🚚 <strong>Bayar Tunai ke Kurir (COD)</strong>
+            <small>Bayar saat dijemput.</small>
+          </label>
 
-          <label>
+          <label class="payment-option">
+            <input type="radio" name="metode" value="Tunai (Outlet)" />
+            🏢 <strong>Bayar di Outlet</strong>
+            <small>Bayar langsung di kasir toko.</small>
+          </label>
+
+          <hr style="margin: 15px 0; border:0; border-top:1px dashed #ccc;">
+
+          <label class="payment-option">
             <input type="radio" name="metode" value="Transfer" />
-            Transfer Bank
-          </label><br />
+            🏦 <strong>Transfer Bank</strong>
+            <small>BCA / Mandiri (Upload Bukti)</small>
+          </label>
 
-          <label>
+          <label class="payment-option">
             <input type="radio" name="metode" value="QRIS" />
-            QRIS (Scan)
-          </label><br />
-
-          <label>
-            <input type="radio" name="metode" value="VA" />
-            Virtual Account (BNI)
-          </label><br />
-
-          <label>
-            <input type="radio" name="metode" value="Kartu Kredit" />
-            Kartu Kredit (Online)
-          </label><br />
+            📱 <strong>QRIS</strong>
+            <small>Gopay / OVO / ShopeePay</small>
+          </label>
         </fieldset>
 
-        <br />
-        <button type="submit">✅ Konfirmasi & Lanjut ke Instruksi</button>
+        <button type="submit" style="width:100%; padding:15px; margin-top:20px; font-size:1.1rem;">✅ Konfirmasi Pesanan</button>
       </form>
     </section>
   </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <hr />
-    <p style="text-align: center;">&copy; 2025 MR KLIN LAUNDRY | Pembayaran Aman & Nyaman</p>
-  </footer>
 </body>
 </html>
