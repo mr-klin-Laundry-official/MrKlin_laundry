@@ -3,28 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputBukti = document.getElementById("inputBukti");
   const previewImg = document.getElementById("previewImg");
 
-  // Ambil Data Pesanan Aktif
+  // 1. Cek Data Pesanan Sementara
+  // Kita ambil data yang dikirim dari halaman payment.js sebelumnya
   const orderData = JSON.parse(localStorage.getItem("orderData"));
-  const semuaPesanan = JSON.parse(localStorage.getItem("pesanan")) || [];
-
+  
   if (!orderData) {
-    alert("Tidak ada pesanan aktif.");
-    window.location.href = "dashboard.html";
+    // Jika data hilang (misal user refresh paksa atau kelamaan), kembalikan ke riwayat
+    alert("Sesi pesanan telah berakhir atau sudah diproses. Silakan cek Riwayat.");
+    window.location.href = "riwayat.html";
     return;
   }
 
-  // 1. Fitur Preview Gambar sebelum Upload
+  // 2. Fitur Preview Gambar (Agar user yakin foto yang dipilih benar)
   if (inputBukti) {
     inputBukti.addEventListener("change", function () {
       const file = this.files[0];
       if (file) {
-        // Cek ukuran file (Max 2MB agar LocalStorage tidak penuh)
-        if (file.size > 2 * 1024 * 1024) {
-          alert("Ukuran file terlalu besar! Maksimal 2MB.");
-          this.value = ""; // Reset input
-          return;
-        }
-
         const reader = new FileReader();
         reader.onload = function (e) {
           previewImg.src = e.target.result;
@@ -35,13 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 2. Logika Saat Tombol "Kirim Bukti" Diklik
+  // 3. Logika Submit / Kirim Bukti
   if (formBukti) {
     formBukti.addEventListener("submit", (e) => {
       e.preventDefault();
 
       if (!inputBukti.files[0]) {
-        alert("Mohon pilih foto bukti pembayaran terlebih dahulu.");
+        alert("Mohon pilih foto bukti pembayaran terlebih dahulu!");
         return;
       }
 
@@ -49,36 +43,37 @@ document.addEventListener("DOMContentLoaded", () => {
       btnSubmit.textContent = "⏳ Mengunggah...";
       btnSubmit.disabled = true;
 
-      // Konversi Gambar ke Base64 (Text)
+      // Proses konversi gambar ke text (Base64) agar bisa disimpan di LocalStorage
       const reader = new FileReader();
       reader.readAsDataURL(inputBukti.files[0]);
       
       reader.onload = function () {
         const base64Image = reader.result;
 
-        // Update Data Pesanan
-        orderData.buktiBayar = base64Image; // Simpan gambar
-        orderData.status = "Menunggu Verifikasi"; // Ganti status
-        orderData.waktuBayar = new Date().toLocaleString("id-ID");
-
-        // Simpan ke Array Utama (localStorage 'pesanan')
+        // A. Ambil Database Utama Pesanan
+        let semuaPesanan = JSON.parse(localStorage.getItem("pesanan")) || [];
+        
+        // B. Cari pesanan yang sesuai ID-nya
         const index = semuaPesanan.findIndex(p => p.id === orderData.id);
+        
         if (index !== -1) {
-          semuaPesanan[index] = orderData;
+          // C. Update data pesanan dengan Bukti & Status Baru
+          semuaPesanan[index].buktiBayar = base64Image;
+          semuaPesanan[index].status = "Menunggu Verifikasi"; // Status update
+          semuaPesanan[index].waktuBayar = new Date().toLocaleString("id-ID");
+          
+          // D. Simpan Perubahan ke Database Utama
           localStorage.setItem("pesanan", JSON.stringify(semuaPesanan));
+          
+          // E. HAPUS DATA SEMENTARA (Sesi Selesai)
+          localStorage.removeItem("orderData");
+
+          alert("✅ Bukti pembayaran berhasil dikirim! Admin akan segera memverifikasi.");
+          window.location.href = "riwayat.html";
+        } else {
+          alert("Terjadi kesalahan: Data pesanan tidak ditemukan di database.");
+          window.location.href = "riwayat.html";
         }
-
-        // Update orderData session
-        localStorage.setItem("orderData", JSON.stringify(orderData));
-
-        alert("✅ Bukti pembayaran berhasil dikirim! Admin akan segera memverifikasi.");
-        window.location.href = "riwayat.html";
-      };
-
-      reader.onerror = function () {
-        alert("Gagal memproses gambar.");
-        btnSubmit.textContent = "Kirim Bukti Pembayaran";
-        btnSubmit.disabled = false;
       };
     });
   }
