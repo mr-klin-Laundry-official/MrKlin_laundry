@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // === ELEMEN STATISTIK PESANAN ===
+  // === ELEMEN STATISTIK ===
   const totalPesananEl = document.getElementById("totalPesanan");
   const pesananSelesaiEl = document.getElementById("pesananSelesai");
   const jumlahPenggunaEl = document.getElementById("jumlahPengguna");
-  const totalKritikEl = document.getElementById("totalKritik"); // Elemen Baru
+  const totalKritikEl = document.getElementById("totalKritik"); 
 
-  // === ELEMEN STATISTIK PEMBAYARAN ===
   const tunaiCountEl = document.getElementById("tunaiCount");
   const transferCountEl = document.getElementById("transferCount");
   const qrisCountEl = document.getElementById("qrisCount");
@@ -13,37 +12,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const tabelBody = document.getElementById("tabelPesananTerbaru");
 
-  // === 1. HITUNG DATA PESANAN ===
+  // === 1. PROSES DATA PESANAN ===
   const dataPesanan = JSON.parse(localStorage.getItem("pesanan")) || [];
 
   const totalPesanan = dataPesanan.length;
-  const selesai = dataPesanan.filter(p => p.status.toLowerCase() === "selesai").length;
+  // Hitung selesai (case insensitive)
+  const selesai = dataPesanan.filter(p => p.status && p.status.toLowerCase() === "selesai").length;
+  // Hitung user unik
   const penggunaUnik = [...new Set(dataPesanan.map(p => p.nama))];
 
+  // Hitung Metode Pembayaran
   const metodeCount = { Tunai: 0, Transfer: 0, QRIS: 0, VA: 0, "Kartu Kredit": 0 };
-
   dataPesanan.forEach(p => {
-    if (p.metodePembayaran === "Tunai") metodeCount.Tunai++;
-    else if (p.metodePembayaran === "Transfer") metodeCount.Transfer++;
-    else if (p.metodePembayaran === "QRIS") metodeCount.QRIS++;
-    else if (p.metodePembayaran === "VA") metodeCount.VA++;
-    else if (p.metodePembayaran === "Kartu Kredit") metodeCount["Kartu Kredit"]++;
+    let m = p.metodePembayaran || "";
+    if (m.includes("Tunai")) metodeCount.Tunai++;
+    else if (m === "Transfer") metodeCount.Transfer++;
+    else if (m === "QRIS") metodeCount.QRIS++;
+    else if (m === "VA") metodeCount.VA++;
+    else if (m === "Kartu Kredit") metodeCount["Kartu Kredit"]++;
   });
 
-  // === 2. HITUNG DATA KRITIK & SARAN (BARU) ===
+  // === 2. PROSES DATA KRITIK (FEEDBACK) ===
   const dataKritik = JSON.parse(localStorage.getItem("MRKLIN_FEEDBACK_DATA")) || [];
-  // Hanya hitung yang statusnya "Pending"
   const kritikPending = dataKritik.filter(k => k.status === "Pending").length;
 
-  // === 3. TAMPILKAN KE LAYAR ===
+  // === 3. UPDATE TAMPILAN KOTAK STATISTIK ===
   if(totalPesananEl) totalPesananEl.textContent = totalPesanan;
   if(pesananSelesaiEl) pesananSelesaiEl.textContent = selesai;
   if(jumlahPenggunaEl) jumlahPenggunaEl.textContent = penggunaUnik.length;
   
-  // Tampilkan jumlah kritik
   if(totalKritikEl) {
     totalKritikEl.textContent = kritikPending;
-    // Beri warna merah jika ada kritik baru
     if(kritikPending > 0) totalKritikEl.style.color = "red";
   }
 
@@ -52,19 +51,24 @@ document.addEventListener("DOMContentLoaded", function () {
   if(qrisCountEl) qrisCountEl.textContent = metodeCount.QRIS;
   if(vaCountEl) vaCountEl.textContent = metodeCount.VA + metodeCount["Kartu Kredit"];
 
-  // === 4. TABEL PESANAN TERBARU ===
+  // === 4. TABEL PESANAN TERBARU (FIX HARGA) ===
   if (dataPesanan.length > 0) {
     tabelBody.innerHTML = "";
+    // Ambil 5 pesanan terakhir
     const terbaru = dataPesanan.slice().reverse().slice(0, 5); 
+    
     terbaru.forEach(p => {
+      // GUNAKAN TOTAL AKHIR (Jika ada)
+      const hargaTampil = p.totalAkhir || p.total || 0;
+
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${p.nama}</td>
-        <td>${p.layanan}</td>
-        <td>${p.berat} kg</td>
-        <td>Rp${p.total.toLocaleString()}</td>
-        <td>${p.status}</td>
-        <td>${p.metodePembayaran}</td>
+        <td>${p.tipeLayanan || p.layanan || "-"}</td>
+        <td>${p.berat || 0} kg</td>
+        <td>Rp${hargaTampil.toLocaleString("id-ID")}</td>
+        <td><span style="font-weight:bold;">${p.status}</span></td>
+        <td>${p.metodePembayaran || "-"}</td>
       `;
       tabelBody.appendChild(row);
     });
