@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let pesanan = JSON.parse(localStorage.getItem("pesanan")) || [];
 
-  // Filter hanya pesanan milik user yang login
+  // Filter pesanan milik user login
   if (currentUser) {
     pesanan = pesanan.filter(p => p.nama === currentUser.nama);
   }
@@ -20,47 +20,48 @@ document.addEventListener("DOMContentLoaded", () => {
     const card = document.createElement("div");
     card.classList.add("card-riwayat");
 
-    // LOGIKA TOMBOL PELUNASAN
-    let extraInfo = "";
+    // LOGIKA TOMBOL: Lacak vs Bayar Pelunasan
+    let aksiButton = "";
+
     if (p.status === "Menunggu Pelunasan" && p.sisaTagihan > 0) {
-      extraInfo = `
-        <div style="background:#fff3cd; color:#856404; padding:10px; border-radius:5px; margin:10px 0; border:1px solid #ffeeba;">
-          ⚠️ <strong>Konfirmasi Berat: ${p.berat} Kg</strong><br>
-          Total Tagihan: Rp ${(p.totalAkhir).toLocaleString()}<br>
-          Sudah DP: Rp ${(p.totalAkhir - p.sisaTagihan).toLocaleString()}<br>
-          <strong style="color:#d35400; font-size:1.1rem;">Kekurangan: Rp ${p.sisaTagihan.toLocaleString()}</strong>
-          
-          <button onclick="bayarSisa('${p.id}')" style="width:100%; margin-top:8px; background:#d35400; color:white; border:none; padding:10px; border-radius:5px; font-weight:bold; cursor:pointer;">
-            💳 Bayar Kekurangan Sekarang
-          </button>
+      // TAMPILAN TAGIHAN PELUNASAN
+      aksiButton = `
+        <div style="background:#fff3cd; padding:10px; border-radius:5px; margin-bottom:10px; font-size:0.9rem;">
+          ⚠️ <strong>Kurang Bayar: Rp ${p.sisaTagihan.toLocaleString()}</strong>
         </div>
+        <button onclick="bayarSisa('${p.id}')" class="btn-lunas">💳 Bayar Kekurangan</button>
+      `;
+    } else {
+      // TAMPILAN TOMBOL LACAK (Normal)
+      aksiButton = `
+        <button onclick="bukaTracking('${p.id}')" class="btn-lacak">📍 Lacak Status</button>
       `;
     }
 
     card.innerHTML = `
       <h3>🧺 ${p.layanan || p.tipeLayanan}</h3>
       <p>Tanggal: ${p.waktuOrder || "-"}</p>
-      <p>Status: <strong>${p.status}</strong></p>
-      ${extraInfo}
-      ${p.sisaTagihan === 0 && p.status === "Diproses" ? `<p style="color:green; font-weight:bold;">✅ Lunas - Sedang Dikerjakan</p>` : ""}
+      <p>Status: <strong style="color:#1976d2">${p.status}</strong></p>
+      ${p.totalAkhir ? `<p>Total: Rp ${p.totalAkhir.toLocaleString()}</p>` : `<p>Total (DP): Rp ${(p.total||0).toLocaleString()}</p>`}
+      <div class="card-actions" style="margin-top:10px;">
+        ${aksiButton}
+      </div>
     `;
     container.appendChild(card);
   });
 
-  // Fungsi Transisi ke Halaman Bayar untuk Pelunasan
+  // FUNGSI GLOBAL (Agar bisa dipanggil onclick)
+  window.bukaTracking = (id) => {
+    console.log("Membuka tracking untuk ID:", id); // Debugging
+    window.location.href = `tracking.html?orderId=${id}`;
+  };
+
   window.bayarSisa = (id) => {
-    // Ambil data terbaru dari localStorage (karena mungkin sudah diupdate admin)
     const allOrders = JSON.parse(localStorage.getItem("pesanan"));
     const targetOrder = allOrders.find(o => o.id === id);
-
     if (targetOrder) {
-      // Set flag pelunasan agar payment.js tahu ini bukan order baru
-      targetOrder.isPelunasan = true; 
-      
-      // Simpan ke sesi payment
+      targetOrder.isPelunasan = true;
       localStorage.setItem("orderData", JSON.stringify(targetOrder));
-      
-      // Pindah
       window.location.href = "payment.html";
     }
   };
