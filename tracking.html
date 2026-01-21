@@ -3,74 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pelacakan Status Pesanan - MR KLIN LAUNDRY</title>
+  <title>Pelacakan - MR KLIN LAUNDRY</title>
   <link rel="stylesheet" href="tracking.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <script src="tracking.js" defer></script>
-  <style>
-    .btn-update-status {
-      display: inline-block;
-      background-color: #1565c0;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 6px;
-      margin-top: 20px;
-    }
-
-    .btn-update-status:hover {
-      background-color: #0d47a1;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .btn-back {
-      display: inline-block;
-      padding: 8px 16px;
-      margin-bottom: 10px;
-      background-color: #ccc;
-      color: #000;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-  </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="tracking-header" style="text-align:center; padding: 20px;">
-    <h1>📦 Pelacakan Status Pesanan</h1>
-    <p>Lihat perkembangan layanan laundry Anda secara real-time di bawah ini.</p>
-    <a href="riwayat.html" class="btn-back">⬅️ Kembali ke Riwayat</a>
-    <hr />
+  <header class="tracking-header">
+    <h1>📦 Status Pesanan</h1>
+    <a href="riwayat.html" class="btn-back">⬅️ Kembali</a>
   </header>
 
-  <!-- DETAIL PESANAN -->
-  <section class="detail-pesanan" style="padding: 0 20px;">
-    <h2>🧾 Detail Pesanan Anda</h2>
-    <div class="pesanan-info" id="detailPesanan">
-      <!-- Akan diisi oleh JavaScript -->
-    </div>
-  </section>
+  <main>
+    <section class="card detail-card">
+      <h3>🧾 Informasi Pesanan</h3>
+      <div id="detailPesanan">Memuat...</div>
+    </section>
 
-  <!-- PROGRESS STATUS -->
-  <section class="progress-tracker" style="padding: 0 20px;">
-    <h2>🚚 Status Pengolahan Pesanan</h2>
-    <p id="statusText" class="status-info">Memuat status...</p>
-    <div id="progressStatus" class="progress-bar" style="display:flex; gap:10px; flex-wrap: wrap;">
-      <!-- Akan diisi oleh JavaScript -->
-    </div>
-  </section>
+    <section class="card progress-card">
+      <h3>🚚 Perjalanan Laundry</h3>
+      <p id="statusText" class="status-highlight">...</p>
+      <div id="progressStatus" class="progress-container"></div>
+    </section>
 
-  <!-- TOMBOL ADMIN -->
-  <section style="text-align:center; padding: 20px;">
-    <a href="ubah-status.html" id="adminUbahStatus" class="btn-update-status hidden">🔧 Kelola Status (Admin)</a>
-  </section>
+    <section id="feedbackSection" class="card feedback-card hidden">
+      <h3>🌟 Beri Nilai Pesanan</h3>
+      <p>Bagaimana kualitas layanan kami?</p>
 
-  <!-- FOOTER -->
-  <footer class="tracking-footer" style="text-align:center; padding: 20px;">
-    <hr />
-    <p>&copy; 2025 MR KLIN LAUNDRY | Pelacakan Status Pesanan Cepat & Akurat</p>
-  </footer>
+      <div class="star-rating">
+        <i class="fas fa-star" data-value="1"></i>
+        <i class="fas fa-star" data-value="2"></i>
+        <i class="fas fa-star" data-value="3"></i>
+        <i class="fas fa-star" data-value="4"></i>
+        <i class="fas fa-star" data-value="5"></i>
+      </div>
+      <p id="ratingText" style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">Silakan ketuk bintang</p>
+
+      <p style="text-align: left; font-size: 0.9rem; margin-bottom: 8px;">Apa yang kamu suka?</p>
+      <div class="tags-container">
+        <span class="tag" onclick="toggleTag(this)">Wanginya Harum</span>
+        <span class="tag" onclick="toggleTag(this)">Pakaian Bersih</span>
+        <span class="tag" onclick="toggleTag(this)">Setrika Rapi</span>
+        <span class="tag" onclick="toggleTag(this)">Proses Cepat</span>
+        <span class="tag" onclick="toggleTag(this)">Kurir Ramah</span>
+        <span class="tag" onclick="toggleTag(this)">Harga Murah</span>
+      </div>
+
+      <textarea id="komentarUser" placeholder="Berikan komentar tambahan (opsional)..." rows="3"></textarea>
+
+      <button onclick="kirimFeedback()" class="btn-kirim">🚀 Kirim Penilaian</button>
+    </section>
+
+    <section id="thankYouSection" class="card hidden" style="text-align:center; background:#e8f5e9;">
+      <h3 style="color:#2e7d32;">✅ Terima Kasih!</h3>
+      <p>Penilaian Anda sangat membantu kami.</p>
+    </section>
+
+  </main>
 </body>
 </html>
